@@ -1,20 +1,33 @@
 .content {
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 20px 0;
-  width: 1080px;
-  background: #fff;
+  width: 1280px;
+  box-shadow: 0 0 15px 0 #5d4725;
 }
 
 .section {
-  margin: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 15px 50px 30px;
+  background: linear-gradient(#fff, #c4bcaf);
 }
 
-.section__search-area {
-  padding: 0 40px;
+.header {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px 140px;
+  background:  linear-gradient(#c4bcaf, #fff);
+  border-bottom: 2px solid #c4bcaf;
 }
 
-.drop-list {
+.header__drop-lists-wrap {
   display: flex;
   gap: 0 30px;
+  max-width: 1000px;
+  margin-top: 15px;
 }

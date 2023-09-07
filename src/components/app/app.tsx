@@ -2,29 +2,36 @@ import appStyles from './app.module.css';
 
 import {SearchForm} from '../search-form/search-form';
 import {DropList} from '../drop-list/drop-list';
+import {MainPage} from '../../pages/main-page/main-page';
+
 import {categoryDropListOptions, sortDropListOptions} from '../../utils/constants';
+import {BookPage} from '../../pages/book-page/book-page';
 
 function App() {
   return (
     <div className={appStyles.content}>
-      <section className={`${appStyles.section} ${appStyles['section__search-area']}`}>
+      <header className={appStyles.header}>
         <SearchForm/>
-        <div className={appStyles['drop-list']}>
-          <DropList label="Категории:">
+        <div className={appStyles['header__drop-lists-wrap']}>
+          <DropList label="Category:">
             {
               categoryDropListOptions.map((option, index) => (
-                <option key={index} value={option.value}>{option.meaning}</option>
+                <option key={index} value={option.value}>{option.value}</option>
               ))
             }
           </DropList>
-          <DropList label="Сортировка:">
+          <DropList label="Sort by:">
             {
               sortDropListOptions.map((option, index) => (
-                <option key={index} value={option.value}>{option.meaning}</option>
+                <option key={index} value={option.value}>{option.value}</option>
               ))
             }
           </DropList>
         </div>
+      </header>
+      <section className={appStyles.section}>
+        {/*<MainPage/>*/}
+        <BookPage/>
       </section>
     </div>
   );
