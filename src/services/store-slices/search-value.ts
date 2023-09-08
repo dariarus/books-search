@@ -1,9 +1,9 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {TErrorState} from '../types/response-data';
-import {ISearchValueActions} from '../types/actions';
-import {ISearchValue} from '../types/store-slices';
 
-const initialSearchValueState = (): ISearchValue => {
+import {ISearchValueActions} from '../types/actions';
+import {ISearchValueSliceState} from '../types/store-slices';
+
+const initialSearchValueState = (): ISearchValueSliceState => {
   return {
     searchValue: '',
   }

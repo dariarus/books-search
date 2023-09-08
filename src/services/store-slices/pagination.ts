@@ -1,10 +1,10 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-import {IPagination} from '../types/store-slices';
+import {IPaginationSliceState} from '../types/store-slices';
 import {numberItemsToShow} from '../../utils/constants';
 import {IPaginationActions} from '../types/actions';
 
-const initialPaginationState = (): IPagination => {
+const initialPaginationState = (): IPaginationSliceState => {
   return {
     paginationStartIndex: 0,
   }

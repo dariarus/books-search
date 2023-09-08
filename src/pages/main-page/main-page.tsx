@@ -13,7 +13,6 @@ export const MainPage: FunctionComponent = () => {
   const searchValueState = useSelector(state => state.searchValueState);
   const paginationStartIndex = useSelector(state => state.paginationState);
 
-  console.log('main page: ', booksListState.booksList)
   const dispatch = useAppDispatch();
 
   return (
@@ -22,7 +21,6 @@ export const MainPage: FunctionComponent = () => {
       <ul className={mainPageStyles['books__list']}>
         {
           booksListState.booksList.map((book, index) => {
-            console.log('thumbnails: ', book.volumeInfo.imageLinks)
             return (<BookCard key={index}
                               title={book.volumeInfo.title ? book.volumeInfo.title : ''}
                               imageUrl={book.volumeInfo.imageLinks

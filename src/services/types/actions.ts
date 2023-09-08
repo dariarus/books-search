@@ -18,6 +18,12 @@ export interface ISearchValueActions {
   clearSearchValueState: ActionCreatorWithoutPayload<string>,
 }
 
+export interface ISearchParametersActions {
+  setCategoryValue: ActionCreatorWithPayload<string>,
+  setSortValue: ActionCreatorWithPayload<string>,
+  clearSearchParametersState: ActionCreatorWithoutPayload<string>,
+}
+
 type TBooksListActions = IBooksListActions;
 type TPaginationActions = IPaginationActions;
 type TSearchValueActions = ISearchValueActions;

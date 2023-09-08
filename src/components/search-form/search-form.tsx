@@ -3,8 +3,8 @@ import {ChangeEvent, FormEvent, FunctionComponent, useCallback, useState} from '
 import formStyles from './search-form.module.css';
 
 import {Button} from '../button/button';
-import {getBooksList} from '../../services/actions/books';
-import {useAppDispatch} from '../../services/types/hooks';
+import {getBooksByCategory, getBooksList} from '../../services/actions/books';
+import {useAppDispatch, useSelector} from '../../services/types/hooks';
 
 import {searchValueActions} from '../../services/store-slices/search-value';
 

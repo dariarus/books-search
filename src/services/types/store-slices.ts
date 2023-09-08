@@ -1,5 +1,5 @@
 import {TBooksListData, TErrorState} from './response-data';
-import {paginationInitialStartIndex} from '../../utils/constants';
+import exp from 'constants';
 
 export interface IBooksListSliceState {
   isLoading: boolean,
@@ -9,10 +9,15 @@ export interface IBooksListSliceState {
   booksList: Array<{volumeInfo: TBooksListData}>
 }
 
-export interface IPagination {
+export interface IPaginationSliceState {
   paginationStartIndex: number,
 }
 
-export interface ISearchValue {
+export interface ISearchValueSliceState {
   searchValue: string,
+}
+
+export interface ISearchParametersSliceState {
+  categoryValue: string,
+  sortValue: string
 }

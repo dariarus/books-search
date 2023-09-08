@@ -61,3 +61,30 @@ export const getMoreBooks = (value: string, paginationStartIndex: number): AppTh
       })
   }
 }
+
+export const getBooksByCategory = (value: string, category: string): AppThunk => {
+  return function (dispatch: AppDispatch) {
+
+    dispatch(booksListActions.getBooksList());
+
+    return fetch(`${googleBooksApiUrl}?q=${value}+subject:${category}&maxResults=${numberItemsToShow}&key=${googleApiKey}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+      .then(res => getResponseData<{ totalItems: number, items: Array<{ volumeInfo: TBooksListData }> }>(res))
+      .then((res) => {
+        dispatch(booksListActions.getFirstBooksListSuccess({totalItems: res.totalItems, items: res.items}));
+        dispatch(paginationActions.resetPaginationStartIndex());
+      })
+      .then((res) => {
+        dispatch(paginationActions.updatePaginationStartIndex());
+        return res;
+      })
+      .catch((err) => {
+        console.log(err.message);
+        dispatch(booksListActions.getBooksListFailed({message: err.message}));
+      })
+  }
+}

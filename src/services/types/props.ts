@@ -1,4 +1,4 @@
-import {ReactNode} from 'react';
+import {ChangeEvent, ReactNode} from 'react';
 
 export type TButton = {
   name: string,
@@ -7,8 +7,10 @@ export type TButton = {
 }
 
 export type TDropList = {
+  id: string,
   label: string,
-  children: ReactNode
+  children: ReactNode,
+  onChange: (e: ChangeEvent<HTMLSelectElement>) => void
 }
 
 
