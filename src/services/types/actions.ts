@@ -2,12 +2,27 @@ import {ActionCreatorWithoutPayload, ActionCreatorWithPayload} from '@reduxjs/to
 import {TBooksListData, TErrorState} from './response-data';
 
 export interface IBooksListActions {
-  getBooksListSuccess: ActionCreatorWithPayload<{ totalItems: number, items: ReadonlyArray<{volumeInfo: TBooksListData}> }>,
+  getFirstBooksListSuccess: ActionCreatorWithPayload<{ totalItems: number, items: Array<{ volumeInfo: TBooksListData }> }>,
+  updateBooksList: ActionCreatorWithPayload<{ items: Array<{ volumeInfo: TBooksListData }> }>,
   getBooksList: ActionCreatorWithoutPayload<string>,
   getBooksListFailed: ActionCreatorWithPayload<TErrorState>
 }
 
+export interface IPaginationActions {
+  updatePaginationStartIndex: ActionCreatorWithoutPayload<string>,
+  resetPaginationStartIndex: ActionCreatorWithoutPayload<string>,
+}
+
+export interface ISearchValueActions {
+  setSearchValue: ActionCreatorWithPayload<string>,
+  clearSearchValueState: ActionCreatorWithoutPayload<string>,
+}
+
 type TBooksListActions = IBooksListActions;
+type TPaginationActions = IPaginationActions;
+type TSearchValueActions = ISearchValueActions;
 
 export type TApplicationActions =
   TBooksListActions
+  | TPaginationActions
+  | TSearchValueActions

@@ -1,9 +1,9 @@
 import {ReactNode} from 'react';
 
 export type TButton = {
-  isDisabled: boolean,
   name: string,
-  onClick: () => void
+  isDisabled?: boolean,
+  onClick?: () => void
 }
 
 export type TDropList = {
@@ -15,7 +15,7 @@ export type TDropList = {
 // TODO: заменить any[] на string[]
 export type TBookCard = {
   title: string,
-  imageUrl: string,
+  imageUrl: string | undefined,
   category: string,
-  authors: any[]
+  authors: any[] | ''
 }

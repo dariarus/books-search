@@ -14,9 +14,9 @@ export const booksListSlice = createSlice({
     booksList: []
   } as IBooksListSliceState,
   reducers: {
-    getBooksListSuccess: (state, action: PayloadAction<{
+    getFirstBooksListSuccess: (state, action: PayloadAction<{
       totalItems: number,
-      items: ReadonlyArray<{ volumeInfo: TBooksListData }>
+      items: Array<{ volumeInfo: TBooksListData }>
     }>) => {
       return {
         ...state,
@@ -24,6 +24,14 @@ export const booksListSlice = createSlice({
         hasError: false,
         totalResults: action.payload.totalItems,
         booksList: action.payload.items
+      }
+    },
+    updateBooksList: (state, action: PayloadAction<{
+      items: Array<{ volumeInfo: TBooksListData }>
+    }>) => {
+      return {
+        ...state,
+        booksList: [...state.booksList, ...action.payload.items] // объединение имеющихся данных и новых
       }
     },
     getBooksList: (state) => {
@@ -47,13 +55,15 @@ export const booksListSlice = createSlice({
 export default booksListSlice.reducer
 
 const {
-  getBooksListSuccess,
+  getFirstBooksListSuccess,
+  updateBooksList,
   getBooksList,
   getBooksListFailed
 } = booksListSlice.actions
 
 export const booksListActions: IBooksListActions = {
-  getBooksListSuccess: getBooksListSuccess,
+  getFirstBooksListSuccess: getFirstBooksListSuccess,
+  updateBooksList: updateBooksList,
   getBooksList: getBooksList,
   getBooksListFailed: getBooksListFailed
 }

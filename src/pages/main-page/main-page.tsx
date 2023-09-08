@@ -5,12 +5,16 @@ import mainPageStyles from './main-page.module.css';
 import {BookCard} from '../../components/book-card/book-card';
 import {Button} from '../../components/button/button';
 
-import mockBookCover from '../../images/header-background.jpg';
-import {useSelector} from '../../services/types/hooks';
+import {useAppDispatch, useSelector} from '../../services/types/hooks';
+import {getMoreBooks} from '../../services/actions/books';
 
 export const MainPage: FunctionComponent = () => {
-  const booksListState = useSelector(state => state.booksListState)
-  console.log(booksListState)
+  const booksListState = useSelector(state => state.booksListState);
+  const searchValueState = useSelector(state => state.searchValueState);
+  const paginationStartIndex = useSelector(state => state.paginationState);
+
+  console.log('main page: ', booksListState.booksList)
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -18,19 +22,32 @@ export const MainPage: FunctionComponent = () => {
       <ul className={mainPageStyles['books__list']}>
         {
           booksListState.booksList.map((book, index) => {
-            console.log(book)
-           return (<BookCard key={index}
-                              title={book.volumeInfo.title}
-                              imageUrl={book.volumeInfo.imageLinks.thumbnail}
-                              category={book.volumeInfo.categories[0]}
-                              authors={book.volumeInfo.authors.map((author, index) => (<li
+            console.log('thumbnails: ', book.volumeInfo.imageLinks)
+            return (<BookCard key={index}
+                              title={book.volumeInfo.title ? book.volumeInfo.title : ''}
+                              imageUrl={book.volumeInfo.imageLinks
+                              && book.volumeInfo.imageLinks.thumbnail
+                                ? book.volumeInfo.imageLinks.thumbnail
+                                : undefined}
+                              category={book.volumeInfo.categories ?
+                                book.volumeInfo.categories[0]
+                                : ''}
+                              authors={book.volumeInfo.authors
+                                ? book.volumeInfo.authors.map((author, index) => (<li
                                 key={index}
                                 className={mainPageStyles['books__list-item-text']}>{author}
-                              </li>))}
-            />)})
+                              </li>))
+                              : ''}
+            />)
+          })
         }
       </ul>
-      <Button isDisabled={false} name="Show more" onClick={() => console.log('hi')}/>
+      {
+        booksListState.booksList && booksListState.totalResults > 30 &&
+        <Button name="Show more" onClick={() => {
+          dispatch(getMoreBooks(searchValueState.searchValue, paginationStartIndex.paginationStartIndex))
+        }}/>
+      }
     </>
   )
 }

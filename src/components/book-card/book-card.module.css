@@ -1,7 +1,6 @@
 .book {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   box-sizing: border-box;
   padding: 20px;
   max-height: 380px;
@@ -31,29 +30,45 @@
   /*gap: 5px 0;*/
   margin-top: 20px;
   max-width: 100%;
+  overflow: auto;
+  scrollbar-color: #78684e #afa492; /* «цвет ползунка» «цвет полосы скроллбара» */
+  scrollbar-width: thin;
+}
+
+.book__text-wrap::-webkit-scrollbar {
+  width: 3px;
+  height: 0;
+  background-color: #afa492;
+  border-radius: 50px;
+}
+
+/* ползунок скроллбара */
+.book__text-wrap::-webkit-scrollbar-thumb {
+  background-color: #78684e;
+  border-radius: 50px;
 }
 
 .book__text {
   margin: 0;
   font-family: 'Inter', 'Arial', sans-serif;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /*white-space: nowrap;*/
+  /*overflow: hidden;*/
+  /*text-overflow: ellipsis;*/
 }
 
 .book__text_heading {
   /*margin-top: 20px;*/
   font-weight: 600;
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 15px;
+  line-height: 17px;
 }
 
 .book__text_paragraph {
   margin-top: 5px;
   font-weight: 400;
   font-style: italic;
-  font-size: 16px;
-  line-height: 18px;
+  font-size: 13px;
+  line-height: 15px;
 }
 
 .book__authors-list {
@@ -63,21 +78,6 @@
   padding: 0;
   list-style: none;
   width: 100%;
-  max-height: 2em;
-  overflow-y: auto;
-  scrollbar-color: #78684e #afa492; /* «цвет ползунка» «цвет полосы скроллбара» */
-  scrollbar-width: thin;
-}
-
-.book__authors-list::-webkit-scrollbar {
-  width: 3px;
-  height: 0;
-  background-color: #afa492;
-  border-radius: 50px;
-}
-
-/* ползунок скроллбара */
-.book__authors-list::-webkit-scrollbar-thumb {
-  background-color: #78684e;
-  border-radius: 50px;
+  /*max-height: 2em;*/
+  padding-inline-start: 0;
 }
