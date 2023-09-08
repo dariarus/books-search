@@ -6,32 +6,29 @@ import {BookCard} from '../../components/book-card/book-card';
 import {Button} from '../../components/button/button';
 
 import mockBookCover from '../../images/header-background.jpg';
+import {useSelector} from '../../services/types/hooks';
 
 export const MainPage: FunctionComponent = () => {
+  const booksListState = useSelector(state => state.booksListState)
+  console.log(booksListState)
+
   return (
     <>
-      <h2 className={mainPageStyles['books__text']}>Total results: 0000</h2>
+      <h2 className={mainPageStyles['books__text']}>Total results: {booksListState.totalResults}</h2>
       <ul className={mainPageStyles['books__list']}>
-        <BookCard title="My Title My Title My Title My Title My Title" imageUrl={mockBookCover} category="My category"
-                  authors={
-                    ["Super Author"].map(author => <p
-                      className={mainPageStyles['books__list-item-text']}>{author}</p>)}/>
-        <BookCard title="My Title My Title My Title My Title My Title" imageUrl={mockBookCover} category="My category"
-                  authors={
-                    ["Super Author"].map(author => <p
-                      className={mainPageStyles['books__list-item-text']}>{author}</p>)}/>
-        <BookCard title="My Title My Title My Title My Title My Title" imageUrl={mockBookCover} category="My category"
-                  authors={
-                    ["Super Author"].map(author => <p
-                      className={mainPageStyles['books__list-item-text']}>{author}</p>)}/>
-        <BookCard title="My Title My Title My Title My Title My Title" imageUrl={mockBookCover} category="My category"
-                  authors={
-                    ["Super Author, Super Author, Super Author, Super Author"].map(author => <p
-                      className={mainPageStyles['books__list-item-text']}>{author}</p>)}/>
-        <BookCard title="My Title My Title My Title My Title My Title" imageUrl={mockBookCover} category="My category"
-                  authors={
-                    ["Super Author, Super Author, Super Author, Super Author"].map(author => <p
-                      className={mainPageStyles['books__list-item-text']}>{author}</p>)}/>
+        {
+          booksListState.booksList.map((book, index) => {
+            console.log(book)
+           return (<BookCard key={index}
+                              title={book.volumeInfo.title}
+                              imageUrl={book.volumeInfo.imageLinks.thumbnail}
+                              category={book.volumeInfo.categories[0]}
+                              authors={book.volumeInfo.authors.map((author, index) => (<li
+                                key={index}
+                                className={mainPageStyles['books__list-item-text']}>{author}
+                              </li>))}
+            />)})
+        }
       </ul>
       <Button isDisabled={false} name="Show more" onClick={() => console.log('hi')}/>
     </>

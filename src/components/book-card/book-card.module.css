@@ -1,15 +1,14 @@
 .book {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
   box-sizing: border-box;
   padding: 20px;
-  max-height: 480px;
+  max-height: 380px;
   border-radius: 5px;
   background: linear-gradient(#c4b9a8, #8b8170);
   box-shadow: none;
-  overflow: clip;
+  overflow: hidden;
   transition: box-shadow .5s;
 }
 
@@ -19,7 +18,7 @@
 
 .book__image {
   width: 100%;
-  height: 350px;
+  height: 250px;
   object-fit: cover;
   object-position: center center;
   border-radius: 5px;
@@ -27,7 +26,11 @@
 }
 
 .book__text-wrap {
-  max-width: 230px;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*gap: 5px 0;*/
+  margin-top: 20px;
+  max-width: 100%;
 }
 
 .book__text {
@@ -39,7 +42,7 @@
 }
 
 .book__text_heading {
-  margin-top: 20px;
+  /*margin-top: 20px;*/
   font-weight: 600;
   font-size: 18px;
   line-height: 20px;
@@ -54,7 +57,27 @@
 }
 
 .book__authors-list {
-  margin: 0;
+  /*display: flex;*/
+  /*flex-flow: row nowrap;*/
+  margin: 5px 0 0;
   padding: 0;
   list-style: none;
+  width: 100%;
+  max-height: 2em;
+  overflow-y: auto;
+  scrollbar-color: #78684e #afa492; /* «цвет ползунка» «цвет полосы скроллбара» */
+  scrollbar-width: thin;
+}
+
+.book__authors-list::-webkit-scrollbar {
+  width: 3px;
+  height: 0;
+  background-color: #afa492;
+  border-radius: 50px;
+}
+
+/* ползунок скроллбара */
+.book__authors-list::-webkit-scrollbar-thumb {
+  background-color: #78684e;
+  border-radius: 50px;
 }

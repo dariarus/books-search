@@ -9,7 +9,7 @@ import {BookPage} from '../../pages/book-page/book-page';
 
 function App() {
   return (
-    <div className={appStyles.content}>
+    <main className={appStyles.content}>
       <header className={appStyles.header}>
         <SearchForm/>
         <div className={appStyles['header__drop-lists-wrap']}>
@@ -30,10 +30,10 @@ function App() {
         </div>
       </header>
       <section className={appStyles.section}>
-        {/*<MainPage/>*/}
-        <BookPage/>
+        <MainPage/>
+        {/*<BookPage/>*/}
       </section>
-    </div>
+    </main>
   );
 }
 
