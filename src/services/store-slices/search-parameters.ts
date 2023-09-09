@@ -5,7 +5,7 @@ import {ISearchParametersActions, ISearchValueActions} from '../types/actions';
 const initialSearchParametersState = (): ISearchParametersSliceState => {
   return {
     categoryValue: '',
-    sortValue: ''
+    sortValue: 'relevance'
   }
 }
 

@@ -11,6 +11,7 @@ import {getMoreBooks} from '../../services/actions/books';
 export const MainPage: FunctionComponent = () => {
   const booksListState = useSelector(state => state.booksListState);
   const searchValueState = useSelector(state => state.searchValueState);
+  const searchParametersState = useSelector(state => state.searchParametersState);
   const paginationStartIndex = useSelector(state => state.paginationState);
 
   const dispatch = useAppDispatch();
@@ -32,10 +33,10 @@ export const MainPage: FunctionComponent = () => {
                                 : ''}
                               authors={book.volumeInfo.authors
                                 ? book.volumeInfo.authors.map((author, index) => (<li
-                                key={index}
-                                className={mainPageStyles['books__list-item-text']}>{author}
-                              </li>))
-                              : ''}
+                                  key={index}
+                                  className={mainPageStyles['books__list-item-text']}>{author}
+                                </li>))
+                                : ''}
             />)
           })
         }
@@ -43,7 +44,12 @@ export const MainPage: FunctionComponent = () => {
       {
         booksListState.booksList && booksListState.totalResults > 30 &&
         <Button name="Show more" onClick={() => {
-          dispatch(getMoreBooks(searchValueState.searchValue, paginationStartIndex.paginationStartIndex))
+          dispatch(getMoreBooks(
+            searchValueState.searchValue,
+            searchParametersState.categoryValue,
+            searchParametersState.sortValue,
+            paginationStartIndex.paginationStartIndex
+          ))
         }}/>
       }
     </>

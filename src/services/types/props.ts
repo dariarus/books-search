@@ -1,4 +1,4 @@
-import {ChangeEvent, ReactNode} from 'react';
+import {ChangeEvent, ReactElement, ReactNode} from 'react';
 
 export type TButton = {
   name: string,
@@ -13,11 +13,9 @@ export type TDropList = {
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void
 }
 
-
-// TODO: заменить any[] на string[]
 export type TBookCard = {
   title: string,
   imageUrl: string | undefined,
   category: string,
-  authors: any[] | ''
+  authors: ReactElement[] | ''
 }

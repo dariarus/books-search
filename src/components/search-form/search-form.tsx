@@ -3,13 +3,15 @@ import {ChangeEvent, FormEvent, FunctionComponent, useCallback, useState} from '
 import formStyles from './search-form.module.css';
 
 import {Button} from '../button/button';
-import {getBooksByCategory, getBooksList} from '../../services/actions/books';
+import {getBooksListBySearchParameters} from '../../services/actions/books';
 import {useAppDispatch, useSelector} from '../../services/types/hooks';
 
 import {searchValueActions} from '../../services/store-slices/search-value';
 
 export const SearchForm: FunctionComponent = () => {
-  const [searchValue, setSearchValue] = useState<string>('');
+  const searchValueState = useSelector(state => state.searchValueState);
+  const searchParametersState = useSelector(state => state.searchParametersState);
+  const [searchValue, setSearchValue] = useState<string>(searchValueState.searchValue);
 
   const dispatch = useAppDispatch();
 
@@ -21,7 +23,7 @@ export const SearchForm: FunctionComponent = () => {
     <form className={`${formStyles.form} ${formStyles['form_search']}`}
           onSubmit={(e: FormEvent<HTMLFormElement>) => {
             e.preventDefault();
-            dispatch(getBooksList(searchValue));
+            dispatch(getBooksListBySearchParameters(searchValue, searchParametersState.categoryValue, searchParametersState.sortValue));
           }}>
       <label htmlFor="search" className={formStyles['input__label']}>Search for your book
         {/*<p>“There is more treasure in books than in all the pirate's loot on Treasure Island.” ― Walt Disney</p>*/}

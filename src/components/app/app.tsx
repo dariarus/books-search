@@ -10,10 +10,11 @@ import {ChangeEvent, SelectHTMLAttributes, useCallback, useState} from 'react';
 import {useAppDispatch, useSelector} from '../../services/types/hooks';
 import {searchValueActions} from '../../services/store-slices/search-value';
 import {searchParametersActions, searchParametersSlice} from '../../services/store-slices/search-parameters';
-import {getBooksByCategory} from '../../services/actions/books';
+import {getBooksListBySearchParameters} from '../../services/actions/books';
 
 function App() {
   const searchValueState = useSelector(state => state.searchValueState);
+  const searchParametersState = useSelector(state => state.searchParametersState);
   const [categoryValue, setCategoryValue] = useState<string>('');
   const [sortValue, setSortValue] = useState<string>('');
 
@@ -25,9 +26,8 @@ function App() {
 
   const handleSetCategoryValue = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
-    // setCategoryValue(e.target.value);
     handleSetCategory(e.target.value);
-    dispatch(getBooksByCategory(searchValueState.searchValue, e.target.value));
+    dispatch(getBooksListBySearchParameters(searchValueState.searchValue, e.target.value, searchParametersState.sortValue));
   }
 
   const handleSetSort = useCallback((value: string) => {
@@ -36,8 +36,8 @@ function App() {
 
   const handleSetSortValue = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
-    setSortValue(e.target.value);
-    handleSetSort(e.target.value)
+    handleSetSort(e.target.value);
+    dispatch(getBooksListBySearchParameters(searchValueState.searchValue, searchParametersState.categoryValue, e.target.value));
   }
 
   return (
