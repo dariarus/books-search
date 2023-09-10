@@ -1,0 +1,23 @@
+.header {
+  margin: 0 auto;
+  background: url(../../images/header-background.jpg) bottom center no-repeat;
+  background-size: cover;
+}
+
+.background-overlay {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: inherit;
+  padding: 20px 140px;
+  background-color: rgba(225, 225, 225, .8);
+}
+
+.header__drop-lists-wrap {
+  display: flex;
+  gap: 0 30px;
+  max-width: 1000px;
+  margin-top: 15px;
+}
