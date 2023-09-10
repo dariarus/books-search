@@ -18,7 +18,13 @@ export const MainPage: FunctionComponent = () => {
 
   return (
     <section className={mainPageStyles.books}>
-      <h2 className={mainPageStyles['books__text']}>Total: {booksListState.totalResults} book(s)</h2>
+      <h2 className={mainPageStyles['books__text']}>
+        {
+          booksListState.booksList?.length > 0
+            ? `Total: ${booksListState.totalResults} ${booksListState.totalResults > 1 ? 'books' : 'book'}`
+            : 'Find the book of yours'
+        }
+      </h2>
       {
         booksListState.booksList
           ? <ul className={mainPageStyles['books__list']}>

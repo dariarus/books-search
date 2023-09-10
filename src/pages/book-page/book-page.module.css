@@ -6,7 +6,6 @@
 
 .book__image {
   width: 400px;
-  height: 500px;
   object-fit: fill;
   object-position: center center;
   border-radius: 5px;
@@ -71,4 +70,33 @@
 
 .book__text_span:last-of-type::after {
   content: '';
+}
+
+@media screen and (max-width: 992px) {
+
+}
+
+@media screen and (max-width: 768px) {
+  .book__image {
+    width: 200px;
+    max-height: 300px;
+  }
+  
+  .book__text_heading {
+    font-size: 30px;
+    line-height: 32px;
+  }
+  
+  .book__text_paragraph {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+}
+
+@media screen and (max-width: 320px) {
+
 }

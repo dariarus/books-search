@@ -44,3 +44,23 @@
   margin: 30px auto 0;
   padding: 20px;
 }
+
+@media screen and (max-width: 992px) {
+
+}
+
+@media screen and (max-width: 768px) {
+  .button_search {
+    bottom: 13px;
+    right: 3px;
+    padding: 8px 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+}
+
+@media screen and (max-width: 320px) {
+
+}

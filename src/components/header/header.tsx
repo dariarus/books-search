@@ -40,26 +40,28 @@ export const Header: FunctionComponent = () => {
   return (
     <header className={headerStyles.header}>
       <div className={headerStyles['background-overlay']}>
-        <SearchForm/>
-        <div className={headerStyles['header__drop-lists-wrap']}>
-          <DropList id="category"
-                    label="Category:"
-                    onChange={(e: ChangeEvent<HTMLSelectElement>) => handleSetCategoryValue(e)}>
-            {
-              categoryDropListOptions.map((option, index) => (
-                <option key={index} value={option.value === 'all' ? '' : option.value}>{option.value}</option>
-              ))
-            }
-          </DropList>
-          <DropList id="sort"
-                    label="Sort by:"
-                    onChange={(e: ChangeEvent<HTMLSelectElement>) => handleSetSortValue(e)}>
-            {
-              sortDropListOptions.map((option, index) => (
-                <option key={index} value={option.value}>{option.value}</option>
-              ))
-            }
-          </DropList>
+        <div className={headerStyles['header__search-options-wrap']}>
+          <SearchForm/>
+          <div className={headerStyles['header__drop-lists-wrap']}>
+            <DropList id="category"
+                      label="Category:"
+                      onChange={(e: ChangeEvent<HTMLSelectElement>) => handleSetCategoryValue(e)}>
+              {
+                categoryDropListOptions.map((option, index) => (
+                  <option key={index} value={option.value === 'all' ? '' : option.value}>{option.value}</option>
+                ))
+              }
+            </DropList>
+            <DropList id="sort"
+                      label="Sort by:"
+                      onChange={(e: ChangeEvent<HTMLSelectElement>) => handleSetSortValue(e)}>
+              {
+                sortDropListOptions.map((option, index) => (
+                  <option key={index} value={option.value}>{option.value}</option>
+                ))
+              }
+            </DropList>
+          </div>
         </div>
       </div>
     </header>
