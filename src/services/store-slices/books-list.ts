@@ -16,7 +16,7 @@ export const booksListSlice = createSlice({
   reducers: {
     getFirstBooksListSuccess: (state, action: PayloadAction<{
       totalItems: number,
-      items: Array<{ volumeInfo: TBooksListData }>
+      items: Array<{ id: string, volumeInfo: TBooksListData }>
     }>) => {
       return {
         ...state,
@@ -27,11 +27,11 @@ export const booksListSlice = createSlice({
       }
     },
     updateBooksList: (state, action: PayloadAction<{
-      items: Array<{ volumeInfo: TBooksListData }>
+      items: Array<{ id: string, volumeInfo: TBooksListData }>
     }>) => {
       return {
         ...state,
-        booksList: [...state.booksList, ...action.payload.items] // объединение имеющихся данных и новых
+        booksList: [...state.booksList, ...action.payload.items] // объединение имеющихся данных с новыми
       }
     },
     getBooksList: (state) => {

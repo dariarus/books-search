@@ -6,8 +6,8 @@
 
 .book__image {
   width: 400px;
-  min-height: 500px;
-  object-fit: cover;
+  height: 500px;
+  object-fit: fill;
   object-position: center center;
   border-radius: 5px;
   box-shadow: 15px 15px 15px 0 #5d4725;
@@ -19,6 +19,8 @@
 
 .book__text {
   margin: 20px 0 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+  color: #000;
 }
 
 .book__text:first-of-type {
@@ -27,22 +29,37 @@
 
 .book__text_heading {
   margin-bottom: 20px;
-  font-family: 'Inter', 'Arial', sans-serif;
   font-weight: 600;
   font-size: 40px;
   line-height: 44px;
 }
 
 .book__text_paragraph {
-  font-family: 'Inter', 'Arial', sans-serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
 }
 
-.book__text_span {
+.book__text_italic-span {
+  font-style: italic;
+}
+
+.book__text_comma-span {
+  display: inline-block;
+  margin: 0 0 0 5px;
+}
+
+.book__text_comma-span::after {
+  content: ',';
+}
+
+.book__text_comma-span:last-of-type::after {
+  content: '';
+  margin: 0;
+}
+
+.book__text_slash-span {
   margin-left: 5px;
-  font-family: 'Inter', 'Arial', sans-serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;

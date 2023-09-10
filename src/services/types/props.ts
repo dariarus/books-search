@@ -14,8 +14,10 @@ export type TDropList = {
 }
 
 export type TBookCard = {
+  id: string,
   title: string,
   imageUrl: string | undefined,
   category: string,
-  authors: ReactElement[] | ''
+  authors: ReactElement[] | '',
+  onClick: () => void
 }

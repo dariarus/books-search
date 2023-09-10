@@ -5,10 +5,9 @@
   box-shadow: 0 0 15px 0 #5d4725;
 }
 
-.section {
+.main {
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+  
   margin: 0 auto;
   padding: 15px 50px 30px;
   background: linear-gradient(#fff, #c4bcaf);

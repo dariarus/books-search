@@ -6,7 +6,7 @@ import {BookCard} from '../../components/book-card/book-card';
 import {Button} from '../../components/button/button';
 
 import {useAppDispatch, useSelector} from '../../services/types/hooks';
-import {getMoreBooks} from '../../services/actions/books';
+import {getBookData, getMoreBooks} from '../../services/actions/books';
 
 export const MainPage: FunctionComponent = () => {
   const booksListState = useSelector(state => state.booksListState);
@@ -17,15 +17,15 @@ export const MainPage: FunctionComponent = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <>
-      <h2 className={mainPageStyles['books__text']}>Total results: {booksListState.totalResults}</h2>
+    <section className={mainPageStyles.books}>
+      <h2 className={mainPageStyles['books__text']}>Total: {booksListState.totalResults} book(s)</h2>
       <ul className={mainPageStyles['books__list']}>
         {
           booksListState.booksList.map((book, index) => {
             return (<BookCard key={index}
+                              id={book.id}
                               title={book.volumeInfo.title ? book.volumeInfo.title : ''}
-                              imageUrl={book.volumeInfo.imageLinks
-                              && book.volumeInfo.imageLinks.thumbnail
+                              imageUrl={book.volumeInfo.imageLinks?.thumbnail
                                 ? book.volumeInfo.imageLinks.thumbnail
                                 : undefined}
                               category={book.volumeInfo.categories ?
@@ -37,6 +37,7 @@ export const MainPage: FunctionComponent = () => {
                                   className={mainPageStyles['books__list-item-text']}>{author}
                                 </li>))
                                 : ''}
+                              onClick={() => getBookData(book.id)}
             />)
           })
         }
@@ -52,6 +53,6 @@ export const MainPage: FunctionComponent = () => {
           ))
         }}/>
       }
-    </>
+    </section>
   )
 }

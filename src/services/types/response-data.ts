@@ -10,3 +10,10 @@ export type TBooksListData = {
     thumbnail: string
   }
 }
+
+export type TBookData = Omit<TBooksListData, "{imageLinks: {thumbnail: string}}"> & {
+  description: string,
+  imageLinks: {
+    large: string
+  }
+}

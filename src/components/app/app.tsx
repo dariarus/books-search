@@ -1,3 +1,6 @@
+import {ChangeEvent, useCallback, useState} from 'react';
+import {Routes, Route} from 'react-router-dom';
+
 import appStyles from './app.module.css';
 
 import {SearchForm} from '../search-form/search-form';
@@ -6,11 +9,12 @@ import {MainPage} from '../../pages/main-page/main-page';
 import {BookPage} from '../../pages/book-page/book-page';
 
 import {categoryDropListOptions, sortDropListOptions} from '../../utils/constants';
-import {ChangeEvent, SelectHTMLAttributes, useCallback, useState} from 'react';
+
 import {useAppDispatch, useSelector} from '../../services/types/hooks';
-import {searchValueActions} from '../../services/store-slices/search-value';
-import {searchParametersActions, searchParametersSlice} from '../../services/store-slices/search-parameters';
+
+import {searchParametersActions} from '../../services/store-slices/search-parameters';
 import {getBooksListBySearchParameters} from '../../services/actions/books';
+
 
 function App() {
   const searchValueState = useSelector(state => state.searchValueState);
@@ -41,7 +45,7 @@ function App() {
   }
 
   return (
-    <main className={appStyles.content}>
+    <div className={appStyles.content}>
       <header className={appStyles.header}>
         <SearchForm/>
         <div className={appStyles['header__drop-lists-wrap']}>
@@ -65,11 +69,13 @@ function App() {
           </DropList>
         </div>
       </header>
-      <section className={appStyles.section}>
-        <MainPage/>
-        {/*<BookPage/>*/}
-      </section>
-    </main>
+      <main className={appStyles.main}>
+        <Routes>
+          <Route path="/" element={<MainPage/>}/>
+          <Route path="/book/:id" element={<BookPage/>}/>
+        </Routes>
+      </main>
+    </div>
   );
 }
 

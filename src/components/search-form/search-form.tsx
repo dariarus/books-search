@@ -1,4 +1,5 @@
 import {ChangeEvent, FormEvent, FunctionComponent, useCallback, useState} from 'react';
+import {useMatch, useNavigate} from "react-router-dom";
 
 import formStyles from './search-form.module.css';
 
@@ -15,6 +16,22 @@ export const SearchForm: FunctionComponent = () => {
 
   const dispatch = useAppDispatch();
 
+  const navigate = useNavigate();
+  const returnToMainPage = useCallback(() => {
+      navigate("/", {replace: true});
+    },
+    [navigate]
+  );
+
+  const currentRouteData = useMatch({path: '/', end: true});
+  /* хук useMatch возвращает данные вида:
+  {
+    params: {}, - отсюда можно достать id
+    pathname: "/",
+    pathnameBase: "/",
+    pattern: {path: '/', caseSensitive: false, end: true}
+  } */
+
   const handleSetSearchValue = useCallback((value: string) => {
     dispatch(searchValueActions.setSearchValue(value));
   }, [dispatch])
@@ -23,10 +40,15 @@ export const SearchForm: FunctionComponent = () => {
     <form className={`${formStyles.form} ${formStyles['form_search']}`}
           onSubmit={(e: FormEvent<HTMLFormElement>) => {
             e.preventDefault();
+            // Перед новым поиском вернуть польз-ля со страницы книги на главную:
+            if (currentRouteData?.pathname !== '/') {
+              returnToMainPage();
+            }
             dispatch(getBooksListBySearchParameters(searchValue, searchParametersState.categoryValue, searchParametersState.sortValue));
           }}>
       <label htmlFor="search" className={formStyles['input__label']}>Search for your book
-        {/*<p>“There is more treasure in books than in all the pirate's loot on Treasure Island.” ― Walt Disney</p>*/}
+        {/*<p>“There is more treasure in books than in all the pirate's loot on Treasure Island.” ― Walt Disney</p>*/
+        }
         <input type="text"
                id="search"
                name="search"
