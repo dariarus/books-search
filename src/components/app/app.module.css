@@ -1,13 +1,18 @@
+.background-overlay {
+  height: 100%;
+  background-color: rgba(120, 104, 78, .7);
+}
+
 .content {
   box-sizing: border-box;
   margin: 0 auto;
   width: 1280px;
-  box-shadow: 0 0 15px 0 #5d4725;
+  box-shadow: 0 0 15px 0 #000;
+  background: linear-gradient(#c4bcaf, #fff, #c4bcaf);
 }
 
 .main {
   box-sizing: border-box;
   margin: 0 auto;
   padding: 15px 50px 30px;
-  background: linear-gradient(#c4bcaf, #fff, #c4bcaf);
 }

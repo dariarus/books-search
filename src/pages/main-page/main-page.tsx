@@ -19,32 +19,40 @@ export const MainPage: FunctionComponent = () => {
   return (
     <section className={mainPageStyles.books}>
       <h2 className={mainPageStyles['books__text']}>Total: {booksListState.totalResults} book(s)</h2>
-      <ul className={mainPageStyles['books__list']}>
-        {
-          booksListState.booksList.map((book, index) => {
-            return (<BookCard key={index}
-                              id={book.id}
-                              title={book.volumeInfo.title ? book.volumeInfo.title : ''}
-                              imageUrl={book.volumeInfo.imageLinks?.thumbnail
-                                ? book.volumeInfo.imageLinks.thumbnail
-                                : undefined}
-                              category={book.volumeInfo.categories ?
-                                book.volumeInfo.categories[0]
-                                : ''}
-                              authors={book.volumeInfo.authors
-                                ? book.volumeInfo.authors.map((author, index) => (<li
-                                  key={index}
-                                  className={mainPageStyles['books__list-item-text']}>{author}
-                                </li>))
-                                : ''}
-                              onClick={() => getBookData(book.id)}
-            />)
-          })
-        }
-      </ul>
       {
-        booksListState.booksList && booksListState.totalResults > 30 &&
-        <Button name="Show more" onClick={() => {
+        booksListState.booksList
+          ? <ul className={mainPageStyles['books__list']}>
+            {
+              booksListState.booksList.map((book, index) => {
+                return (<BookCard key={index}
+                                  id={book.id}
+                                  title={book.volumeInfo.title ? book.volumeInfo.title : ''}
+                                  imageUrl={book.volumeInfo.imageLinks?.thumbnail
+                                    ? book.volumeInfo.imageLinks.thumbnail
+                                    : undefined}
+                                  category={book.volumeInfo.categories ?
+                                    book.volumeInfo.categories[0]
+                                    : ''}
+                                  authors={book.volumeInfo.authors
+                                    ? book.volumeInfo.authors.map((author, index) => (<li
+                                      key={index}
+                                      className={mainPageStyles['books__list-item-text']}>{author}
+                                    </li>))
+                                    : ''}
+                                  onClick={() => getBookData(book.id)}
+                />)
+              })
+
+            }
+          </ul>
+          : <p className={`${mainPageStyles['books__text']} ${mainPageStyles['books__text_paragraph']}`}>Nothing was
+            found</p>
+      }
+      {
+        booksListState.booksList
+        && booksListState.totalResults > 30
+        && booksListState.booksList.length !== booksListState.totalResults
+        && <Button name="Show more" onClick={() => {
           dispatch(getMoreBooks(
             searchValueState.searchValue,
             searchParametersState.categoryValue,

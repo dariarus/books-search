@@ -13,6 +13,11 @@
   color: #000;
 }
 
+.books__text_paragraph {
+  margin-top: 50px;
+  color: #69635a;
+}
+
 .books__list {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

@@ -11,6 +11,7 @@ import './fonts/fonts.css';
 import App from './components/app/app';
 
 import {store} from "./services/store";
+import appStyles from './components/app/app.module.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
