@@ -1,7 +1,7 @@
 .label {
   margin: 0 10px 0 0;
   font-family: 'Inter', 'Arial', sans-serif;
-  font-weight: 200;
+  font-weight: 400;
   font-size: 16px;
   line-height: 18px;
   color: #000;
@@ -18,7 +18,7 @@
   appearance: none;
   background: url(../../images/drop-list-arrow.svg) 96% / 5% no-repeat #c4b9a8;
   font-family: 'Inter', 'Arial', sans-serif;
-  font-weight: 200;
+  font-weight: 400;
   font-size: 16px;
   line-height: 18px;
   color: #000;
