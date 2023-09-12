@@ -57,8 +57,20 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 650px) {
+  .button_search {
+    bottom: 11px;
+    right: 0;
+    padding: 10px 20px;
+  }
+}
 
+@media screen and (max-width: 480px) {
+  .button_search {
+    bottom: 11px;
+    right: 0;
+    padding: 13px 20px;
+  }
 }
 
 @media screen and (max-width: 320px) {

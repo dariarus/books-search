@@ -25,23 +25,36 @@
 .header__drop-lists-wrap {
   align-self: flex-start;
   display: flex;
+  flex-direction: row;
   gap: 0 30px;
   max-width: 1000px;
   margin-top: 15px;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (max-width: 992px) {
 
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
 
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (max-width: 480px) {
+  .background-overlay {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
+  .header__drop-lists-wrap {
+    align-self: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px 0;
+  }
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (max-width: 320px) {
 
 }

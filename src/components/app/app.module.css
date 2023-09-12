@@ -36,8 +36,8 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 341px) {
   .content {
-    width: 320px;
+    width: 340px;
   }
 }
