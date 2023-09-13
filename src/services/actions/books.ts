@@ -8,11 +8,13 @@ import {getResponseData} from './json-verification';
 import {booksListActions} from '../store-slices/books-list';
 import {paginationActions} from '../store-slices/pagination';
 import {bookDataActions} from '../store-slices/book-data';
+import {searchDataActions} from "../store-slices/search-data";
 
 export const getBooksListBySearchParameters = (value: string, category: string, sortBy: string): AppThunk => {
   return function (dispatch: AppDispatch) {
 
     dispatch(booksListActions.getBooksList());
+    dispatch(searchDataActions.setIsSearching(true));
 
     return fetch(`${googleBooksApiUrl}?q=${value}${category !== ''
       ? '+subject:' + category
@@ -26,6 +28,7 @@ export const getBooksListBySearchParameters = (value: string, category: string, 
       .then((res) => {
         dispatch(booksListActions.getFirstBooksListSuccess({totalItems: res.totalItems, items: res.items}));
         dispatch(paginationActions.resetPaginationStartIndex());
+        dispatch(searchDataActions.setIsSearching(false));
       })
       .then((res) => {
         dispatch(paginationActions.updatePaginationStartIndex());
@@ -42,6 +45,7 @@ export const getMoreBooks = (value: string, category: string, sortBy: string, pa
   return function (dispatch: AppDispatch) {
 
     dispatch(booksListActions.getBooksList());
+    dispatch(searchDataActions.setIsSearching(true));
 
     return fetch(
       `${googleBooksApiUrl}?q=${value}${category !== ''
@@ -54,7 +58,8 @@ export const getMoreBooks = (value: string, category: string, sortBy: string, pa
       })
       .then(res => getResponseData<{ items: Array<{ id: string, volumeInfo: TBooksListData }> }>(res))
       .then((res) => {
-        dispatch(booksListActions.updateBooksList({items: res.items}))
+        dispatch(booksListActions.updateBooksList({items: res.items}));
+        dispatch(searchDataActions.setIsSearching(false));
       })
       .then((res) => {
         dispatch(paginationActions.updatePaginationStartIndex());
@@ -82,7 +87,10 @@ export const getBookData = (bookId: string): AppThunk => {
       .then(res => getResponseData<{ volumeInfo: TBookData }>(res))
       .then((res) => {
         dispatch(bookDataActions.getBookDataSuccess(res.volumeInfo));
-        console.log(res.volumeInfo)
+      })
+      .catch((err) => {
+        console.log(err.message);
+        dispatch(bookDataActions.getBookDataFailed({message: err.message}));
       })
   }
 }

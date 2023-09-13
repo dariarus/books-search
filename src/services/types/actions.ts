@@ -18,10 +18,13 @@ export interface ISearchValueActions {
   clearSearchValueState: ActionCreatorWithoutPayload<string>,
 }
 
-export interface ISearchParametersActions {
+export interface ISearchDataActions {
+  setSearchValue: ActionCreatorWithPayload<string>,
   setCategoryValue: ActionCreatorWithPayload<string>,
   setSortValue: ActionCreatorWithPayload<string>,
-  clearSearchParametersState: ActionCreatorWithoutPayload<string>,
+  setIsSearching: ActionCreatorWithPayload<boolean>,
+  resetSearchParameters: ActionCreatorWithoutPayload<string>,
+  clearSearchDataState: ActionCreatorWithoutPayload<string>
 }
 
 export interface IBookDataActions {
@@ -32,13 +35,11 @@ export interface IBookDataActions {
 
 type TBooksListActions = IBooksListActions;
 type TPaginationActions = IPaginationActions;
-type TSearchValueActions = ISearchValueActions;
-type TSearchParametersActions = ISearchParametersActions;
+type TSearchDataActions = ISearchDataActions;
 type TBookDataActions = IBookDataActions;
 
 export type TApplicationActions =
   TBooksListActions
   | TPaginationActions
-  | TSearchValueActions
-  | TSearchParametersActions
+  | TSearchDataActions
   | TBookDataActions

@@ -1,5 +1,5 @@
 body {
-  margin: 0 auto;
+  margin: 0;
   /* затеняем фон */
   background: linear-gradient(rgba(120, 104, 78, .5), rgba(120, 104, 78, .5)), center url(./images/global-background.jpg);
   color: #000;

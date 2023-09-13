@@ -31,7 +31,9 @@ export const booksListSlice = createSlice({
     }>) => {
       return {
         ...state,
-        booksList: [...state.booksList, ...action.payload.items] // объединение имеющихся данных с новыми
+        isLoading: false,
+        hasError: false,
+        booksList: [...state.booksList, ...action.payload.items], // объединение имеющихся данных с новыми
       }
     },
     getBooksList: (state) => {

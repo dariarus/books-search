@@ -7,11 +7,11 @@ import {Button} from '../../components/button/button';
 
 import {useAppDispatch, useSelector} from '../../services/types/hooks';
 import {getBookData, getMoreBooks} from '../../services/actions/books';
+import {Preloader} from "../../components/preloader/preloader";
 
 export const MainPage: FunctionComponent = () => {
   const booksListState = useSelector(state => state.booksListState);
-  const searchValueState = useSelector(state => state.searchValueState);
-  const searchParametersState = useSelector(state => state.searchParametersState);
+  const searchDataState = useSelector(state => state.searchDataState);
   const paginationStartIndex = useSelector(state => state.paginationState);
 
   const dispatch = useAppDispatch();
@@ -55,14 +55,18 @@ export const MainPage: FunctionComponent = () => {
             found</p>
       }
       {
+        booksListState.isLoading
+        && <Preloader/>
+      }
+      {
         booksListState.booksList
         && booksListState.totalResults > 30
         && booksListState.booksList.length !== booksListState.totalResults
         && <Button name="Show more" onClick={() => {
           dispatch(getMoreBooks(
-            searchValueState.searchValue,
-            searchParametersState.categoryValue,
-            searchParametersState.sortValue,
+            searchDataState.searchValue,
+            searchDataState.categoryValue,
+            searchDataState.sortValue,
             paginationStartIndex.paginationStartIndex
           ))
         }}/>

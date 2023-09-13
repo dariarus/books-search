@@ -6,35 +6,35 @@ import {SearchForm} from '../search-form/search-form';
 import {DropList} from '../drop-list/drop-list';
 
 import {useAppDispatch, useSelector} from '../../services/types/hooks';
-import {searchParametersActions} from '../../services/store-slices/search-parameters';
+
+import {searchDataActions} from '../../services/store-slices/search-data';
 import {getBooksListBySearchParameters} from '../../services/actions/books';
 
 import {categoryDropListOptions, sortDropListOptions} from '../../utils/constants';
 
 export const Header: FunctionComponent = () => {
-  const searchValueState = useSelector(state => state.searchValueState);
-  const searchParametersState = useSelector(state => state.searchParametersState);
+  const searchDataState = useSelector(state => state.searchDataState);
 
   const dispatch = useAppDispatch();
 
   const handleSetCategory = useCallback((value: string) => {
-    dispatch(searchParametersActions.setCategoryValue(value));
+    dispatch(searchDataActions.setCategoryValue(value));
   }, [dispatch])
 
   const handleSetCategoryValue = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
     handleSetCategory(e.target.value);
-    dispatch(getBooksListBySearchParameters(searchValueState.searchValue, e.target.value, searchParametersState.sortValue));
+    dispatch(getBooksListBySearchParameters(searchDataState.searchValue, e.target.value, searchDataState.sortValue));
   }
 
   const handleSetSort = useCallback((value: string) => {
-    dispatch(searchParametersActions.setSortValue(value));
+    dispatch(searchDataActions.setSortValue(value));
   }, [dispatch])
 
   const handleSetSortValue = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
     handleSetSort(e.target.value);
-    dispatch(getBooksListBySearchParameters(searchValueState.searchValue, searchParametersState.categoryValue, e.target.value));
+    dispatch(getBooksListBySearchParameters(searchDataState.searchValue, searchDataState.categoryValue, e.target.value));
   }
 
   return (

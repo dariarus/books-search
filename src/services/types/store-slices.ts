@@ -16,13 +16,11 @@ export interface IPaginationSliceState {
   paginationStartIndex: number,
 }
 
-export interface ISearchValueSliceState {
+export interface ISearchDataSliceState {
   searchValue: string,
-}
-
-export interface ISearchParametersSliceState {
   categoryValue: string,
-  sortValue: string
+  sortValue: string,
+  isSearching: boolean
 }
 
 export interface IBookDataSliceState {

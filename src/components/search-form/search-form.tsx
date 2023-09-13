@@ -7,12 +7,11 @@ import {Button} from '../button/button';
 import {getBooksListBySearchParameters} from '../../services/actions/books';
 import {useAppDispatch, useSelector} from '../../services/types/hooks';
 
-import {searchValueActions} from '../../services/store-slices/search-value';
+import {searchDataActions} from "../../services/store-slices/search-data";
 
 export const SearchForm: FunctionComponent = () => {
-  const searchValueState = useSelector(state => state.searchValueState);
-  const searchParametersState = useSelector(state => state.searchParametersState);
-  const [searchValue, setSearchValue] = useState<string>(searchValueState.searchValue);
+  const searchDataState = useSelector(state => state.searchDataState);
+  const [searchValue, setSearchValue] = useState<string>(searchDataState.searchValue);
 
   const dispatch = useAppDispatch();
 
@@ -33,7 +32,7 @@ export const SearchForm: FunctionComponent = () => {
   } */
 
   const handleSetSearchValue = useCallback((value: string) => {
-    dispatch(searchValueActions.setSearchValue(value));
+    dispatch(searchDataActions.setSearchValue(value));
   }, [dispatch])
 
   return (
@@ -44,7 +43,9 @@ export const SearchForm: FunctionComponent = () => {
             if (currentRouteData?.pathname !== '/') {
               returnToMainPage();
             }
-            dispatch(getBooksListBySearchParameters(searchValue, searchParametersState.categoryValue, searchParametersState.sortValue));
+            // При новом поиске сбрасываем параметры категорий и сортировки:
+            Promise.resolve(dispatch(searchDataActions.resetSearchParameters()))
+              .then(() => dispatch(getBooksListBySearchParameters(searchValue, searchDataState.categoryValue, searchDataState.sortValue)));
           }}>
       <label htmlFor="search" className={formStyles['input__label']}>Search for your book
         {/*<p>“There is more treasure in books than in all the pirate's loot on Treasure Island.” ― Walt Disney</p>*/
@@ -61,7 +62,7 @@ export const SearchForm: FunctionComponent = () => {
                }}
         />
       </label>
-      <Button isDisabled={searchValue === ''} name="Search"/>
+      <Button isDisabled={searchValue === '' || searchDataState.isSearching} name="Search"/>
     </form>
   )
 }
