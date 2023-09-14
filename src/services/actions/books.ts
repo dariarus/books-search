@@ -1,7 +1,8 @@
 import {AppDispatch, AppThunk} from '../types';
 import {TBookData, TBooksListData} from '../types/response-data';
 
-import {googleApiKey, googleBooksApiUrl, numberItemsToShow} from '../../utils/constants';
+import {numberItemsToShow} from '../../utils/constants';
+import {GOOGLE_BOOKS_API_URL, GOOGLE_API_KEY} from '../../config';
 
 import {getResponseData} from './json-verification';
 
@@ -16,9 +17,9 @@ export const getBooksListBySearchParameters = (value: string, category: string, 
     dispatch(booksListActions.getBooksList());
     dispatch(searchDataActions.setIsSearching(true));
 
-    return fetch(`${googleBooksApiUrl}?q=${value}${category !== ''
+    return fetch(`${GOOGLE_BOOKS_API_URL}?q=${value}${category !== ''
       ? '+subject:' + category
-      : ''}&orderBy=${sortBy}&maxResults=${numberItemsToShow}&key=${googleApiKey}`, {
+      : ''}&orderBy=${sortBy}&maxResults=${numberItemsToShow}&key=${GOOGLE_API_KEY}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -48,9 +49,9 @@ export const getMoreBooks = (value: string, category: string, sortBy: string, pa
     dispatch(searchDataActions.setIsSearching(true));
 
     return fetch(
-      `${googleBooksApiUrl}?q=${value}${category !== ''
+      `${GOOGLE_BOOKS_API_URL}?q=${value}${category !== ''
         ? '+subject:' + category
-        : ''}&orderBy=${sortBy}&startIndex=${paginationStartIndex}&maxResults=${numberItemsToShow}&key=${googleApiKey}`, {
+        : ''}&orderBy=${sortBy}&startIndex=${paginationStartIndex}&maxResults=${numberItemsToShow}&key=${GOOGLE_API_KEY}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -78,7 +79,7 @@ export const getBookData = (bookId: string): AppThunk => {
     dispatch(bookDataActions.getBookData());
 
     return fetch(
-      `${googleBooksApiUrl}/${bookId}?key=${googleApiKey}`, {
+      `${GOOGLE_BOOKS_API_URL}/${bookId}?key=${GOOGLE_API_KEY}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
