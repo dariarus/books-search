@@ -1,4 +1,4 @@
-import {ChangeEvent, FormEvent, FunctionComponent, useCallback, useState} from 'react';
+import React, {ChangeEvent, FormEvent, FunctionComponent, useCallback, useState} from 'react';
 import {useMatch, useNavigate} from "react-router-dom";
 
 import formStyles from './search-form.module.css';
@@ -9,7 +9,7 @@ import {useAppDispatch, useSelector} from '../../services/types/hooks';
 
 import {searchDataActions} from "../../services/store-slices/search-data";
 
-export const SearchForm: FunctionComponent<{onSubmit: ()=>void}> = (props: any) => {
+export const SearchForm: FunctionComponent = () => {
   const searchDataState = useSelector(state => state.searchDataState);
   const [searchValue, setSearchValue] = useState<string>(searchDataState.searchValue);
 
@@ -40,9 +40,7 @@ export const SearchForm: FunctionComponent<{onSubmit: ()=>void}> = (props: any) 
             if (currentRouteData?.pathname !== '/') {
               returnToMainPage();
             }
-            // При новом поиске сбрасываем параметры категорий и сортировки:
-            // handleSearchParameters();
-            props.onSubmit()
+            dispatch(getBooksListBySearchParameters(searchValue, searchDataState.categoryValue, searchDataState.sortValue));
           }}>
       <label htmlFor="search" className={formStyles['input__label']}>Search for your book
         {/*<p>“There is more treasure in books than in all the pirate's loot on Treasure Island.” ― Walt Disney</p>*/
@@ -59,11 +57,7 @@ export const SearchForm: FunctionComponent<{onSubmit: ()=>void}> = (props: any) 
                }}
         />
       </label>
-      <Button isDisabled={searchValue === '' || searchDataState.isSearching} name="Search" onClick={()=>{
-        dispatch(searchDataActions.setCategoryValue(''))
-
-        console.log(searchDataState.categoryValue)
-      }}/>
+      <Button isDisabled={searchValue === '' || searchDataState.isSearching} name="Search"/>
     </form>
   )
 }

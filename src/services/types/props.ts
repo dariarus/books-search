@@ -10,7 +10,7 @@ export type TDropList = {
   id: string,
   label: string,
   children: ReactNode,
-  onChange: (e: ChangeEvent<HTMLSelectElement>) => void
+  onChange: (e: ChangeEvent<HTMLSelectElement>) => void,
 }
 
 export type TBookCard = {

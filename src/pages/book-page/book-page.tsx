@@ -1,4 +1,4 @@
-import {FunctionComponent, useEffect} from 'react';
+import React, {FunctionComponent, useEffect} from 'react';
 import {useMatch} from 'react-router-dom';
 import parse from 'html-react-parser';
 

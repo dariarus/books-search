@@ -28,10 +28,10 @@ export const getBooksListBySearchParameters = (value: string, category: string, 
       .then((res) => {
         dispatch(booksListActions.getFirstBooksListSuccess({totalItems: res.totalItems, items: res.items}));
         dispatch(paginationActions.resetPaginationStartIndex());
-        dispatch(searchDataActions.setIsSearching(false));
       })
       .then((res) => {
         dispatch(paginationActions.updatePaginationStartIndex());
+        dispatch(searchDataActions.setIsSearching(false));
         return res;
       })
       .catch((err) => {

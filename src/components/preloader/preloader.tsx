@@ -1,4 +1,4 @@
-import {FunctionComponent} from 'react';
+import React, {FunctionComponent} from 'react';
 import ReactDOM from "react-dom";
 
 import preloaderStyles from './preloader.module.css';

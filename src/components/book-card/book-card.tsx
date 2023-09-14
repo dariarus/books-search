@@ -1,4 +1,4 @@
-import {FunctionComponent, useEffect} from 'react';
+import React, {FunctionComponent} from 'react';
 
 import bookCardStyles from './book-card.module.css';
 
