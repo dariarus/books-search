@@ -17,9 +17,9 @@ export const Header: FunctionComponent = () => {
 
   const dispatch = useAppDispatch();
 
-  const handleSetCategory = useCallback((value: string) => {
+  const handleSetCategory = (value: string) => {
     dispatch(searchDataActions.setCategoryValue(value));
-  }, [dispatch])
+  }
 
   const handleSetCategoryValue = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
@@ -27,9 +27,9 @@ export const Header: FunctionComponent = () => {
     dispatch(getBooksListBySearchParameters(searchDataState.searchValue, e.target.value, searchDataState.sortValue));
   }
 
-  const handleSetSort = useCallback((value: string) => {
+  const handleSetSort = (value: string) => {
     dispatch(searchDataActions.setSortValue(value));
-  }, [dispatch])
+  }
 
   const handleSetSortValue = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
@@ -37,11 +37,21 @@ export const Header: FunctionComponent = () => {
     dispatch(getBooksListBySearchParameters(searchDataState.searchValue, searchDataState.categoryValue, e.target.value));
   }
 
+
+
+  const handleSearchParameters = useCallback(() => {
+    dispatch(searchDataActions.resetSearchParameters())
+  }, [])
+
+
+
+
+
   return (
     <header className={headerStyles.header}>
       <div className={headerStyles['background-overlay']}>
         <div className={headerStyles['header__search-options-wrap']}>
-          <SearchForm/>
+          <SearchForm onSubmit={handleSearchParameters}/>
           <div className={headerStyles['header__drop-lists-wrap']}>
             <DropList id="category"
                       label="Category:"

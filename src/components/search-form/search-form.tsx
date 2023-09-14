@@ -9,7 +9,7 @@ import {useAppDispatch, useSelector} from '../../services/types/hooks';
 
 import {searchDataActions} from "../../services/store-slices/search-data";
 
-export const SearchForm: FunctionComponent = () => {
+export const SearchForm: FunctionComponent<{onSubmit: ()=>void}> = (props: any) => {
   const searchDataState = useSelector(state => state.searchDataState);
   const [searchValue, setSearchValue] = useState<string>(searchDataState.searchValue);
 
@@ -31,9 +31,6 @@ export const SearchForm: FunctionComponent = () => {
     pattern: {path: '/', caseSensitive: false, end: true}
   } */
 
-  const handleSetSearchValue = useCallback((value: string) => {
-    dispatch(searchDataActions.setSearchValue(value));
-  }, [dispatch])
 
   return (
     <form className={`${formStyles.form} ${formStyles['form_search']}`}
@@ -44,8 +41,8 @@ export const SearchForm: FunctionComponent = () => {
               returnToMainPage();
             }
             // При новом поиске сбрасываем параметры категорий и сортировки:
-            Promise.resolve(dispatch(searchDataActions.resetSearchParameters()))
-              .then(() => dispatch(getBooksListBySearchParameters(searchValue, searchDataState.categoryValue, searchDataState.sortValue)));
+            // handleSearchParameters();
+            props.onSubmit()
           }}>
       <label htmlFor="search" className={formStyles['input__label']}>Search for your book
         {/*<p>“There is more treasure in books than in all the pirate's loot on Treasure Island.” ― Walt Disney</p>*/
@@ -58,11 +55,15 @@ export const SearchForm: FunctionComponent = () => {
                className={formStyles.input}
                onChange={(e: ChangeEvent<HTMLInputElement>) => {
                  setSearchValue(e.target.value);
-                 handleSetSearchValue(e.target.value);
+                 dispatch(searchDataActions.setSearchValue(e.target.value));
                }}
         />
       </label>
-      <Button isDisabled={searchValue === '' || searchDataState.isSearching} name="Search"/>
+      <Button isDisabled={searchValue === '' || searchDataState.isSearching} name="Search" onClick={()=>{
+        dispatch(searchDataActions.setCategoryValue(''))
+
+        console.log(searchDataState.categoryValue)
+      }}/>
     </form>
   )
 }
