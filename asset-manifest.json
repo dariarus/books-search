@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/google-books-search/static/css/main.b3cfcc38.css",
-    "main.js": "/google-books-search/static/js/main.83225ba0.js",
-    "static/js/787.2075263f.chunk.js": "/google-books-search/static/js/787.2075263f.chunk.js",
-    "static/media/Inter-Regular.woff": "/google-books-search/static/media/Inter-Regular.750b51a29f4c03e0c2db.woff",
-    "static/media/Inter-Regular.woff2": "/google-books-search/static/media/Inter-Regular.e1e044bb56329240543c.woff2",
-    "static/media/Inter-Italic.woff": "/google-books-search/static/media/Inter-Italic.635afeed439bcb3e4823.woff",
-    "static/media/Inter-SemiBold.woff": "/google-books-search/static/media/Inter-SemiBold.25b1ffc9587070462342.woff",
-    "static/media/global-background.jpg": "/google-books-search/static/media/global-background.b7ac2d8c1bf07a8d65d0.jpg",
-    "static/media/header-background.jpg": "/google-books-search/static/media/header-background.f0e2c59194ab6ce61606.jpg",
-    "static/media/Inter-Italic.woff2": "/google-books-search/static/media/Inter-Italic.e2f52803eb133261314f.woff2",
-    "static/media/Inter-SemiBold.woff2": "/google-books-search/static/media/Inter-SemiBold.625474d6ebbfe4e3b0ae.woff2",
-    "static/media/blank-book-cover.png": "/google-books-search/static/media/blank-book-cover.5a98333339ed24e746e1.png",
-    "index.html": "/google-books-search/index.html",
-    "static/media/drop-list-arrow.svg": "/google-books-search/static/media/drop-list-arrow.fdfff347c0e2cfff6cbb.svg",
-    "main.b3cfcc38.css.map": "/google-books-search/static/css/main.b3cfcc38.css.map",
-    "main.83225ba0.js.map": "/google-books-search/static/js/main.83225ba0.js.map",
-    "787.2075263f.chunk.js.map": "/google-books-search/static/js/787.2075263f.chunk.js.map"
+    "main.css": "/static/css/main.3936a028.css",
+    "main.js": "/static/js/main.32186d7d.js",
+    "static/js/787.2075263f.chunk.js": "/static/js/787.2075263f.chunk.js",
+    "static/media/Inter-Regular.woff": "/static/media/Inter-Regular.750b51a29f4c03e0c2db.woff",
+    "static/media/Inter-Regular.woff2": "/static/media/Inter-Regular.e1e044bb56329240543c.woff2",
+    "static/media/Inter-Italic.woff": "/static/media/Inter-Italic.635afeed439bcb3e4823.woff",
+    "static/media/Inter-SemiBold.woff": "/static/media/Inter-SemiBold.25b1ffc9587070462342.woff",
+    "static/media/global-background.jpg": "/static/media/global-background.b7ac2d8c1bf07a8d65d0.jpg",
+    "static/media/header-background.jpg": "/static/media/header-background.f0e2c59194ab6ce61606.jpg",
+    "static/media/Inter-Italic.woff2": "/static/media/Inter-Italic.e2f52803eb133261314f.woff2",
+    "static/media/Inter-SemiBold.woff2": "/static/media/Inter-SemiBold.625474d6ebbfe4e3b0ae.woff2",
+    "static/media/blank-book-cover.png": "/static/media/blank-book-cover.5a98333339ed24e746e1.png",
+    "index.html": "/index.html",
+    "static/media/drop-list-arrow.svg": "/static/media/drop-list-arrow.fdfff347c0e2cfff6cbb.svg",
+    "main.3936a028.css.map": "/static/css/main.3936a028.css.map",
+    "main.32186d7d.js.map": "/static/js/main.32186d7d.js.map",
+    "787.2075263f.chunk.js.map": "/static/js/787.2075263f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b3cfcc38.css",
-    "static/js/main.83225ba0.js"
+    "static/css/main.3936a028.css",
+    "static/js/main.32186d7d.js"
   ]
 }
