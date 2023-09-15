@@ -11,7 +11,6 @@ import './fonts/fonts.css';
 import App from './components/app/app';
 
 import {store} from "./services/store";
-import appStyles from './components/app/app.module.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -19,7 +18,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename='/google-books-search'>
         <App/>
       </BrowserRouter>
     </Provider>
