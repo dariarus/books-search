@@ -1,0 +1,13 @@
+# версия yml-файла
+version: "3.7"
+
+services:
+
+  frontend:
+    container_name: 'books-search'
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    restart: unless-stopped
+    ports:
+      - '8081:80'

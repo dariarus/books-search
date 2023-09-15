@@ -1,0 +1,47 @@
+.background-overlay {
+  height: 100%;
+  background-color: rgba(120, 104, 78, .7);
+}
+
+.content {
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 1280px;
+  box-shadow: 0 0 15px 0 #000;
+  background: linear-gradient(#c4bcaf, #fff, #c4bcaf);
+  min-height: 100vh;
+}
+
+.main {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 15px 50px 30px;
+}
+
+@media screen and (max-width: 992px) {
+  .content {
+    width: 992px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    width: 768px;
+  }
+  
+  .main {
+    padding: 15px 20px 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content {
+    width: 480px;
+  }
+}
+
+@media screen and (max-width: 341px) {
+  .content {
+    width: 340px;
+  }
+}

@@ -1,8 +1,12 @@
 body {
   margin: 0;
+  /* затеняем фон */
+  background: linear-gradient(rgba(120, 104, 78, .5), rgba(120, 104, 78, .5)), center url(./images/global-background.jpg);
+  color: #000;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  line-height: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +14,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@media screen and (max-width: 340px) {
+  body {
+    background: #78684e;
+  }
 }

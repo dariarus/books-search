@@ -1,0 +1,58 @@
+.label {
+  margin: 0 10px 0 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 22px;
+  color: #000;
+}
+
+.select {
+  width: 200px;
+  height: 35px;
+  padding: 5px 30px 5px 5px;
+  outline: none;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(../../images/drop-list-arrow.svg) 96% / 5% no-repeat #c4b9a8;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: #000;
+}
+
+.select:focus {
+  outline: 1px solid rgba(105, 99, 90, 1);
+}
+
+select::-ms-expand {
+  display: none; /* удалить стрелку по умолчанию в IE 10 и 11 */
+}
+
+@media screen and (max-width: 992px) {
+
+}
+
+@media screen and (max-width: 768px) {
+  .label {
+    font-size: 18px;
+    line-height: 20px;
+  }
+  
+  .select {
+    height: 45px;
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+}
+
+@media screen and (max-width: 320px) {
+
+}

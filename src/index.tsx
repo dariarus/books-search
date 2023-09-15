@@ -1,15 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from 'react-redux';
+import {BrowserRouter, HashRouter} from 'react-router-dom';
+
+import './vendor/normalize.css';
+import './index.css';
+import './fonts/fonts.css';
+
+import App from './components/app/app';
+
+import {store} from "./services/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <BrowserRouter basename='/google-books-search'>
+        <App/>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
