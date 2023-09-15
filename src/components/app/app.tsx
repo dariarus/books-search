@@ -8,12 +8,8 @@ import {useSelector} from "../../services/types/hooks";
 import {MainPage} from '../../pages/main-page/main-page';
 import {BookPage} from '../../pages/book-page/book-page';
 import {Header} from '../header/header';
-import {Preloader} from "../preloader/preloader";
 
 function App() {
-  const booksListState = useSelector(state => state.booksListState);
-  const bookDataState = useSelector(state => state.bookDataState);
-
   return (
     <div className={appStyles.content}>
       <Header/>
