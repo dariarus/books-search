@@ -1,7 +1,7 @@
 {
-  "name": "books-search",
+  "name": "google-books-search",
   "version": "0.1.0",
-  "homepage": "https://github.com/dariarus/books-search",
+  "homepage": "https://github.com/dariarus/google-books-search",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
