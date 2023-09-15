@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/dariarus/books-search/static/css/main.84263c24.css",
+    "main.js": "/dariarus/books-search/static/js/main.1c6f5709.js",
+    "static/js/787.289c9f75.chunk.js": "/dariarus/books-search/static/js/787.289c9f75.chunk.js",
+    "static/media/Inter-Regular.woff": "/dariarus/books-search/static/media/Inter-Regular.750b51a29f4c03e0c2db.woff",
+    "static/media/Inter-Regular.woff2": "/dariarus/books-search/static/media/Inter-Regular.e1e044bb56329240543c.woff2",
+    "static/media/Inter-Italic.woff": "/dariarus/books-search/static/media/Inter-Italic.635afeed439bcb3e4823.woff",
+    "static/media/Inter-SemiBold.woff": "/dariarus/books-search/static/media/Inter-SemiBold.25b1ffc9587070462342.woff",
+    "static/media/global-background.jpg": "/dariarus/books-search/static/media/global-background.b7ac2d8c1bf07a8d65d0.jpg",
+    "static/media/header-background.jpg": "/dariarus/books-search/static/media/header-background.f0e2c59194ab6ce61606.jpg",
+    "static/media/Inter-Italic.woff2": "/dariarus/books-search/static/media/Inter-Italic.e2f52803eb133261314f.woff2",
+    "static/media/Inter-SemiBold.woff2": "/dariarus/books-search/static/media/Inter-SemiBold.625474d6ebbfe4e3b0ae.woff2",
+    "static/media/blank-book-cover.png": "/dariarus/books-search/static/media/blank-book-cover.5a98333339ed24e746e1.png",
+    "index.html": "/dariarus/books-search/index.html",
+    "static/media/drop-list-arrow.svg": "/dariarus/books-search/static/media/drop-list-arrow.fdfff347c0e2cfff6cbb.svg",
+    "main.84263c24.css.map": "/dariarus/books-search/static/css/main.84263c24.css.map",
+    "main.1c6f5709.js.map": "/dariarus/books-search/static/js/main.1c6f5709.js.map",
+    "787.289c9f75.chunk.js.map": "/dariarus/books-search/static/js/787.289c9f75.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84263c24.css",
+    "static/js/main.1c6f5709.js"
+  ]
+}
