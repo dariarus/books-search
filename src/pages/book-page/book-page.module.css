@@ -6,6 +6,7 @@
 
 .book__image {
   width: 400px;
+  max-height: 600px;
   object-fit: fill;
   object-position: center center;
   border-radius: 5px;
