@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
-import {BrowserRouter, HashRouter} from 'react-router-dom';
+import {BrowserRouter, createHashRouter, HashRouter, RouterProvider} from 'react-router-dom';
 
 import './vendor/normalize.css';
 import './index.css';
@@ -12,15 +12,23 @@ import App from './components/app/app';
 
 import {store} from "./services/store";
 
+const router = createHashRouter([
+  {
+    path: "/*",
+    element: <App />,
+  }
+]);
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename='/google-books-search'>
-        <App/>
-      </BrowserRouter>
+      {/*<HashRouter basename='/google-books-search'>*/}
+      {/*  <App/>*/}
+      {/*</HashRouter>*/}
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );

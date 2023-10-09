@@ -17,7 +17,7 @@ export const BookPage: FunctionComponent = () => {
   const dispatch = useAppDispatch();
 
   /* currentRouteData.params.id содержит id книги, на странице которой находимся. По нему получаем данные с сервера */
-  const currentRouteData = useMatch({path: '/book/:id', end: true});
+  const currentRouteData = useMatch({path: '/book/:id'});
 
 
   useEffect(() => {

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/books-search.iml" filepath="$PROJECT_DIR$/.idea/books-search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/google-books-search.iml" filepath="$PROJECT_DIR$/.idea/google-books-search.iml" />
     </modules>
   </component>
 </project>
